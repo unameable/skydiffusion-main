@@ -1,0 +1,177 @@
+1. FRAMING
+Create a publication-quality technical architecture diagram for the SkyDiffusion codebase.
+This is an infographic-diagram, not a decorative illustration.
+The reader is a Chinese-speaking researcher studying a ground-to-aerial image synthesis project.
+Use two vertically stacked panels, with a wide landscape canvas, ideally 3200 by 2200 pixels.
+Give priority to precise arrow topology and legible Chinese/English labels.
+
+2. VISUAL STYLE — MODERN MINIMAL
+Use ultra-clean geometric shapes with crisp edges.
+Component cards have softly rounded corners and no heavy outline.
+Use very subtle shadows, not gradients or 3D effects.
+Use bold desaturated color blocks for the background of logical sections.
+Use one accent color per logical group.
+Use dark charcoal sans-serif typography.
+Use a Chinese sans-serif font resembling Noto Sans CJK / Microsoft YaHei.
+Use Inter or Helvetica-like typography for English class names.
+Chinese component titles are bold; code names below are regular.
+All text must remain large enough to read in the whole image.
+Use thin gray arrows with distinct filled arrowheads.
+Use orthogonal arrow routing with rounded bends.
+Keep arrow paths outside boxes except at their endpoints.
+Use source dots only where needed to show a branch.
+Keep ample whitespace and consistent padding.
+Do not draw photographs, satellite thumbnails, icons, or decorative objects.
+Do not draw data charts or numerical axes.
+Use a clean white page background.
+Use thin pale divider lines between the panels.
+Use a strong visual hierarchy: page title, panel titles, component labels, small notes.
+The diagram should look typeset and carefully engineered.
+All module names are exact code identifiers, not translated approximations.
+
+3. COLOR PALETTE
+Page: #FFFFFF.
+Primary text: #2E3440.
+Secondary text and arrows: #667085.
+Data / preprocessing section: #E8EDF2.
+Data accent: #5E81AC.
+Condition encoders section: #E8F2EE.
+Condition accent: #2A9D8F.
+Diffusion core section: #F5F0E8.
+Diffusion accent: #D4A252.
+Output section: #ECE9F5.
+Output accent: #8B7BA8.
+Card fill: #FFFFFF.
+Subtle separators: #DDE3EA.
+
+4. LAYOUT
+Page title, exact text: "SkyDiffusion 项目结构与生成流程".
+Small subtitle, exact text: "街景 → Curved-BEV → 条件扩散 → 航拍图".
+Panel A occupies the upper 32 percent of the canvas.
+Panel A title, exact text: "A  项目模块".
+Panel B occupies the lower 60 percent of the canvas.
+Panel B title, exact text: "B  核心模型：LAControlLDM".
+Allow enough vertical breathing room between panels.
+
+PANEL A:
+A horizontal five-stage main pipeline, left to right.
+Card A1 title: "数据加载".
+Card A1 second line: "SkyDataset".
+Card A2 title: "视角转换".
+Card A2 second line: "Curved-BEV".
+Card A3 title: "条件扩散".
+Card A3 second line: "LAControlLDM".
+Card A4 title: "结果保存".
+Card A4 second line: "ValidImageLogger".
+Card A5 title: "离线评估".
+Card A5 second line: "eval/".
+A1 and A2 sit in a faint blue data region.
+A3 sits in a faint sand model region.
+A4 and A5 sit in a faint lavender output region.
+Above the pipeline place two smaller, neutral support cards.
+Support card S1 exact label: "运行调度  skydiffusion_test.py".
+Support card S2 exact label: "模型配置与权重  YAML / checkpoint".
+Below the row add a slim neutral note line:
+"ldm：VAE · CLIP · 扩散基础 · DDIM".
+At the bottom of panel A add a small clearly readable note:
+"主箭头表示街景生成链路；文本条件见下图。"
+A separate small note underneath it:
+"真实航拍图用于训练 / 验证，不作为生成条件。"
+Do not show any ground-truth image arrow entering the inference graph.
+
+PANEL B:
+Use a large faintly tinted bounding region for LAControlLDM.
+Inside, arrange a clear technical graph with three horizontal tracks.
+Left area contains the condition inputs and encoders.
+Middle area contains the ControlNet and U-Net branches.
+Right area contains sampling and decoding.
+Allow a bottom horizontal channel exclusively for the DDIM feedback loop.
+Keep all 13 control features represented by ONE labeled arrow, not 13 overlapping arrows.
+
+Image-condition track, upper left:
+Node B1 exact label: "BEV 条件图".
+Small dimension inside B1: "3 × 512 × 512".
+To the right of B1 place B2, title: "冻结条件编码器".
+B2 second line: "VAE encoder 副本".
+B2 third line: "4 × 64 × 64".
+To the right of B2 place small node B3 exact label: "通道拼接".
+B3 second line: "4 + 4 = 8".
+To the right of B3 place B4, exact title: "LAControlNet".
+B4 second line: "多尺度控制特征".
+
+Text track, lower left:
+Node B5 exact label: "文本提示".
+To the right of B5 place B6, title: "冻结文本编码器".
+B6 second line: "CLIP".
+Place B6 below B2, with clear outgoing routes to B4 and B8.
+A short label near the outgoing CLIP branches: "文本上下文".
+
+Noise-state track, lower middle:
+Node B7 title: "当前噪声潜变量".
+B7 second line: "z_t · 时间步 t".
+B7 third line: "4 × 64 × 64".
+Place B7 below B3.
+Place B8 below B4, title: "Controlled U-Net".
+B8 second line: "预测噪声".
+Place B9 to the right of B8, title: "DDIM 采样器".
+B9 second line: "逐步更新潜变量".
+Place B10 to the right of B9, title: "VAE 解码器".
+Place B11 to the right of B10, title: "生成航拍图".
+B11 second line: "3 × 512 × 512".
+B10 and B11 can be narrower cards to preserve space.
+Above B7, or on its lower-left side without crossing any other route, place small node B0:
+B0 exact label: "初始随机噪声 z_T".
+B0 feeds B7 once at initialization.
+
+Place a compact bottom note inside panel B:
+"13 路控制 → U-Net 中间层与跳跃连接".
+Place a compact page footer:
+"按默认 lacldm_v15.yaml 绘制 · 张量尺寸以 512 × 512 输入为例".
+A small legend in the footer:
+"实线：数据流    灰色虚线：配置 / 调度".
+The footer must be fully within the canvas.
+
+5. CONNECTIONS
+Panel A arrow 1: A1 → A2, solid gray, left to right.
+Panel A arrow 2: A2 → A3, solid gray, label "hint".
+Panel A arrow 3: A3 → A4, solid gray.
+Panel A arrow 4: A4 → A5, solid gray, label "生成结果".
+Panel A support 1: S1 → A1, gray dashed, route downward.
+Panel A support 2: S1 → A3, gray dashed, route above the main row.
+Panel A support 3: S1 → A4, gray dashed, route above the main row.
+Panel A support 4: S2 → A3, gray dashed.
+No other arrows in Panel A.
+Panel B arrow 1: B1 → B2, solid gray, left to right.
+Panel B arrow 2: B2 → B3, solid gray, label "条件潜变量".
+Panel B arrow 3: B7 → B3, solid gray, route upward into the concatenation node, label "z_t".
+Panel B arrow 4: B3 → B4, solid gray, label "8 通道".
+Panel B arrow 5: B5 → B6, solid gray, left to right.
+Panel B arrow 6: B6 → B4, solid gray, route in the open space above / around B7, text context.
+Panel B arrow 7: B6 → B8, solid gray, text context.
+Panel B arrow 8: B7 → B8, solid gray, direct left to right, label "z_t, t".
+Panel B arrow 9: B7 → B4, solid gray, separate route for "t".
+Panel B arrow 10: B4 → B8, solid gray, vertical downward, label "13 路控制特征".
+Panel B arrow 11: B8 → B9, solid gray, label "预测噪声".
+Panel B arrow 12: B9 → B7, solid gray feedback loop BELOW the core, clearly left-pointing arrowhead at B7.
+Feedback label, exact: "下一步 z_t".
+The feedback loop does NOT return to the BEV or CLIP encoders.
+Panel B arrow 13: B9 → B10, solid gray, label "最终潜变量".
+Panel B arrow 14: B10 → B11, solid gray, left to right.
+Panel B arrow 15: B0 → B7, solid gray, label "初始化".
+No other arrows in Panel B.
+If routes must cross, use a small bridge / gap to make clear there is no junction.
+Every required connection must remain unambiguous.
+
+6. CONSTRAINTS
+Spell Chinese and English labels exactly as specified.
+Do not invent extra modules or metrics.
+Do not connect real aerial ground truth to the generation condition.
+Do not suggest BEV geometry transformation alone is the final generated image.
+The BEV encoder is a frozen COPY of the VAE encoder, not the decoder.
+Only DDIM updates the current noise state; U-Net predicts noise.
+The control features go FROM LAControlNet TO U-Net, never in reverse.
+CLIP feeds BOTH LAControlNet and U-Net.
+Do not depict ddim_hacked.py, unused variants, or annotator as active in the default graph.
+No gradient arrows, no code screenshots, no 3D, no watermarks.
+Do not print the prompt section names or node IDs such as A1/B7.
+Keep the page free of cropped text, overlaps, or floating unconnected labels.

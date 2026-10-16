@@ -1,0 +1,214 @@
+F:\anconda\envs\skydiffusion\lib\site-packages\torchvision\io\image.py:13: UserWarning: Failed to load image Python extension: Could not find module 'F:\anconda\envs\skydiffusion\Lib\site-packages\torchvision\image.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+  warn(f"Failed to load image Python extension: {e}")
+test_cli_trains_saves_and_resumes_with_rgb_manifest (test_single_image_cli.SingleImageCLITests) ... Global seed set to 42
+ModelCheckpoint(save_last=True, save_top_k=-1, monitor=None) will duplicate the last checkpoint saved.
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+F:\anconda\envs\skydiffusion\lib\site-packages\pytorch_lightning\trainer\trainer.py:1566: UserWarning: GPU available but not used. Set the gpus flag in your trainer `Trainer(gpus=1)` or script `--gpus=1`.
+  rank_zero_warn(
+
+  | Name              | Type             | Params
+-------------------------------------------------------
+0 | model             | DiffusionWrapper | 720 K 
+1 | first_stage_model | AutoencoderKL    | 658 K 
+2 | cond_stage_model  | DummyTextEncoder | 16    
+3 | control_model     | LAControlNet     | 381 K 
+4 | cond_encoder      | Sequential       | 256 K 
+-------------------------------------------------------
+381 K     Trainable params
+1.6 M     Non-trainable params
+2.0 M     Total params
+8.066     Total estimated model params size (MB)
+F:\anconda\envs\skydiffusion\lib\site-packages\pytorch_lightning\trainer\data_loading.py:110: UserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+F:\anconda\envs\skydiffusion\lib\site-packages\pytorch_lightning\trainer\data_loading.py:110: UserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+No module 'xformers'. Proceeding without it.
+LAControlLDM: Running in eps-prediction mode
+DiffusionWrapper has 0.72 M params.
+making attention of type 'vanilla' with 64 in_channels
+Working with z of shape (1, 4, 8, 8) = 256 dimensions.
+making attention of type 'vanilla' with 64 in_channels
+LAControlLDM: Running in eps-prediction mode
+DiffusionWrapper has 0.72 M params.
+making attention of type 'vanilla' with 64 in_channels
+Working with z of shape (1, 4, 8, 8) = 256 dimensions.
+making attention of type 'vanilla' with 64 in_channels
+train: 2 pairs; checked 2 previews in C:\Users\dell\AppData\Local\Temp\tmpb4657f9s\run\data_preview\train
+val: 2 pairs; checked 2 previews in C:\Users\dell\AppData\Local\Temp\tmpb4657f9s\run\data_preview\val
+{
+  "mode": "skydiffusion",
+  "loaded_keys": 408,
+  "ignored_extra_keys": [],
+  "ignored_extra_count": 0,
+  "trainable_parameters": 381568,
+  "total_parameters": 2016555,
+  "sd_locked": true,
+  "learning_rate": 1e-05
+}
+
+Training: 0it [00:00, ?it/s]
+Training:   0%|          | 0/4 [00:00<?, ?it/s]
+Epoch 0:   0%|          | 0/4 [00:00<?, ?it/s] 
+Epoch 0:  25%|������       | 1/4 [00:00<00:00,  6.69it/s]
+F:\anconda\envs\skydiffusion\lib\site-packages\pytorch_lightning\utilities\data.py:56: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 1. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+  warning_cache.warn(
+Epoch 0:  25%|������       | 1/4 [00:00<00:00,  6.69it/s, loss=1.02, v_num=0, train/loss_simple_step=1.020, train/loss_vlb_step=0.237, train/loss_step=1.020, global_step=0.000]
+
+Validating: 0it [00:00, ?it/s][A
+
+Validating:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Validating: 100%|��������������������| 1/1 [00:00<00:00,  5.90it/s][A
+Epoch 0:  75%|����������������  | 3/4 [00:00<00:00,  9.26it/s, loss=1.02, v_num=0, train/loss_simple_step=1.020, train/loss_vlb_step=0.237, train/loss_step=1.020, global_step=0.000]
+Epoch 0:  75%|����������������  | 3/4 [00:00<00:00,  9.20it/s, loss=1.02, v_num=0, train/loss_simple_step=1.020, train/loss_vlb_step=0.237, train/loss_step=1.020, global_step=0.000]
+
+                                                         [A
+Epoch 0: 100%|��������������������| 4/4 [00:00<00:00,  8.60it/s, loss=1.02, v_num=0, train/loss_simple_step=1.010, train/loss_vlb_step=0.146, train/loss_step=1.010, global_step=1.000]
+
+Validating: 0it [00:00, ?it/s][A
+
+Validating:   0%|          | 0/1 [00:00<?, ?it/s][A
+
+Validating: 100%|��������������������| 1/1 [00:00<00:00,  5.64it/s][A
+Epoch 0: 100%|��������������������| 4/4 [00:00<00:00,  6.16it/s, loss=1.02, v_num=0, train/loss_simple_step=1.010, train/loss_vlb_step=0.146, train/loss_step=1.010, global_step=1.000]
+
+                                                         [A
+Global seed set to 42
+ModelCheckpoint(save_last=True, save_top_k=-1, monitor=None) will duplicate the last checkpoint saved.
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+Restoring states from the checkpoint path at C:\Users\dell\AppData\Local\Temp\tmpb4657f9s\run\checkpoints\last.ckpt
+F:\anconda\envs\skydiffusion\lib\site-packages\pytorch_lightning\trainer\connectors\checkpoint_connector.py:247: UserWarning: You're resuming from a checkpoint that ended mid-epoch. Training will start from the beginning of the next epoch. This can cause unreliable results if further training is done, consider using an end of epoch checkpoint.
+  rank_zero_warn(
+Restored all states from the checkpoint file at C:\Users\dell\AppData\Local\Temp\tmpb4657f9s\run\checkpoints\last.ckpt
+
+  | Name              | Type             | Params
+-------------------------------------------------------
+0 | model             | DiffusionWrapper | 720 K 
+1 | first_stage_model | AutoencoderKL    | 658 K 
+2 | cond_stage_model  | DummyTextEncoder | 16    
+3 | control_model     | LAControlNet     | 381 K 
+4 | cond_encoder      | Sequential       | 256 K 
+-------------------------------------------------------
+381 K     Trainable params
+1.6 M     Non-trainable params
+2.0 M     Total params
+8.066     Total estimated model params size (MB)
+F:\anconda\envs\skydiffusion\lib\site-packages\pytorch_lightning\callbacks\model_checkpoint.py:617: UserWarning: Checkpoint directory C:\Users\dell\AppData\Local\Temp\tmpb4657f9s\run\checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+F:\anconda\envs\skydiffusion\lib\site-packages\pytorch_lightning\trainer\data_loading.py:393: UserWarning: The number of training samples (2) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+Epoch 0: 100%|��������������������| 4/4 [00:00<00:00,  6.12it/s, loss=1.02, v_num=0, train/loss_simple_step=1.010, train/loss_vlb_step=0.146, train/loss_step=1.010, global_step=1.000]
+LAControlLDM: Running in eps-prediction mode
+DiffusionWrapper has 0.72 M params.
+making attention of type 'vanilla' with 64 in_channels
+Working with z of shape (1, 4, 8, 8) = 256 dimensions.
+making attention of type 'vanilla' with 64 in_channels
+train: 2 pairs; checked 2 previews in C:\Users\dell\AppData\Local\Temp\tmpb4657f9s\run\data_preview\train
+val: 2 pairs; checked 2 previews in C:\Users\dell\AppData\Local\Temp\tmpb4657f9s\run\data_preview\val
+{
+  "mode": "skydiffusion",
+  "loaded_keys": 408,
+  "ignored_extra_keys": [],
+  "ignored_extra_count": 0,
+  "trainable_parameters": 381568,
+  "total_parameters": 2016555,
+  "sd_locked": true,
+  "learning_rate": 1e-05
+}
+
+Training: 0it [00:00, ?it/s]
+Training:   0%|          | 0/4 [00:00<?, ?it/s]
+Epoch 0:   0%|          | 0/4 [00:00<?, ?it/s] 
+Epoch 0:  25%|������       | 1/4 [00:00<00:00,  7.78it/s]
+Epoch 0:  25%|������       | 1/4 [00:00<00:00,  7.78it/s, loss=1.02, v_num=1, train/loss_simple_step=1.020, train/loss_vlb_step=0.237, train/loss_step=1.020, global_step=2.000]
+ok
+test_ddim_schedule_rejects_out_of_range_last_index (test_single_image_cli.SingleImageCLITests) ... ok
+test_resume_smoke_combination_fails_before_loading_weights (test_single_image_cli.SingleImageCLITests) ... usage: skydiffusion_train.py [-h] [--config CONFIG] [--train-data TRAIN_DATA]
+                             [--val-data VAL_DATA] [--data-root DATA_ROOT]
+                             [--clip-model CLIP_MODEL]
+                             [--output-dir OUTPUT_DIR] [--prompt PROMPT]
+                             [--source-mode {panorama,bev}]
+                             [--dataset-name {CVACT,CVUSA}] [--is-cvusa]
+                             [--rotation-degrees ROTATION_DEGREES]
+                             [--image-size IMAGE_SIZE]
+                             [--batch-size BATCH_SIZE]
+                             [--num-workers NUM_WORKERS]
+                             [--accumulate-grad-batches ACCUMULATE_GRAD_BATCHES]
+                             [--max-steps MAX_STEPS] [--devices DEVICES]
+                             [--checkpoint-every CHECKPOINT_EVERY]
+                             [--image-log-every IMAGE_LOG_EVERY]
+                             [--ddim-steps DDIM_STEPS]
+                             [--learning-rate LEARNING_RATE]
+                             [--precision {16,32}] [--accelerator {cpu,gpu}]
+                             [--train-unet-decoder]
+                             [--sd-checkpoint SD_CHECKPOINT | --init-checkpoint INIT_CHECKPOINT | --resume RESUME]
+                             [--check-data] [--smoke-test]
+skydiffusion_train.py: error: --smoke-test starts a new two-step run. For --resume, set --max-steps above the saved step.
+ok
+test_empty_or_malformed_manifest_fails_early (test_single_image_data.SingleImageDataTests) ... ok
+test_explicit_data_root_overrides_manifest_directory (test_single_image_data.SingleImageDataTests) ... ok
+test_float_panorama_condition_is_not_divided_by_255 (test_single_image_data.SingleImageDataTests) ... ok
+test_headered_csv_preserves_quoted_prompt_and_rgb (test_single_image_data.SingleImageDataTests) ... ok
+test_headered_tsv_uses_default_prompt (test_single_image_data.SingleImageDataTests) ... ok
+test_invalid_pickled_conditions_report_sample_and_range (test_single_image_data.SingleImageDataTests) ... ok
+test_legacy_cvact_tsv_and_cvusa_column_order (test_single_image_data.SingleImageDataTests) ... ok
+test_only_supported_panorama_datasets_are_advertised (test_single_image_data.SingleImageDataTests) ... ok
+test_panorama_loader_converts_grayscale_to_rgb (test_single_image_data.SingleImageDataTests) ... ok
+test_pickled_uint8_and_unit_float_conditions_match (test_single_image_data.SingleImageDataTests) ... ok
+test_prompt_dropout_and_opencv_size_order (test_single_image_data.SingleImageDataTests) ... ok
+test_rotation_is_degrees_with_quarter_panorama_shift (test_single_image_data.SingleImageDataTests) ... ok
+test_unreadable_images_report_paths (test_single_image_data.SingleImageDataTests) ... ok
+test_checkpoint_callback_preserves_running_save_step (test_single_image_training.SingleImageTrainingTests) ... ok
+test_checkpoint_preserves_input_gradients_through_frozen_layer (test_single_image_training.SingleImageTrainingTests) ... ok
+Epoch 0:  25%|������       | 1/4 [00:00<00:00,  7.66it/s, loss=1.02, v_num=1, train/loss_simple_step=1.020, train/loss_vlb_step=0.237, train/loss_step=1.020, global_step=2.000]
+LAControlLDM: Running in eps-prediction mode
+DiffusionWrapper has 0.72 M params.
+making attention of type 'vanilla' with 64 in_channels
+Working with z of shape (1, 4, 8, 8) = 256 dimensions.
+making attention of type 'vanilla' with 64 in_channels
+Data shape for DDIM sampling is (1, 4, 8, 8), eta 0.0
+Running DDIM Sampling with 5 timesteps
+test_cpu_preview_samples_and_logs_rgb_hint (test_single_image_training.SingleImageTrainingTests) ... 
+DDIM Sampler:   0%|          | 0/5 [00:00<?, ?it/s]
+DDIM Sampler: 100%|��������������������| 5/5 [00:00<00:00, 125.41it/s]
+ok
+test_lightning_saves_and_resumes_optimizer_and_global_step (test_single_image_training.SingleImageTrainingTests) ... GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+Restoring states from the checkpoint path at C:\Users\dell\AppData\Local\Temp\tmpz6fhwqmf\resume.ckpt
+Restored all states from the checkpoint file at C:\Users\dell\AppData\Local\Temp\tmpz6fhwqmf\resume.ckpt
+ok
+test_sd_initialization_and_strict_checkpoint_validation (test_single_image_training.SingleImageTrainingTests) ... ok
+test_two_optimizer_steps_train_control_and_preserve_frozen_weights (test_single_image_training.SingleImageTrainingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 3.173s
+
+OK
+LAControlLDM: Running in eps-prediction mode
+DiffusionWrapper has 0.72 M params.
+making attention of type 'vanilla' with 64 in_channels
+Working with z of shape (1, 4, 8, 8) = 256 dimensions.
+making attention of type 'vanilla' with 64 in_channels
+LAControlLDM: Running in eps-prediction mode
+DiffusionWrapper has 0.72 M params.
+making attention of type 'vanilla' with 64 in_channels
+Working with z of shape (1, 4, 8, 8) = 256 dimensions.
+making attention of type 'vanilla' with 64 in_channels
+LAControlLDM: Running in eps-prediction mode
+DiffusionWrapper has 0.72 M params.
+making attention of type 'vanilla' with 64 in_channels
+Working with z of shape (1, 4, 8, 8) = 256 dimensions.
+making attention of type 'vanilla' with 64 in_channels
+LAControlLDM: Running in eps-prediction mode
+DiffusionWrapper has 0.72 M params.
+making attention of type 'vanilla' with 64 in_channels
+Working with z of shape (1, 4, 8, 8) = 256 dimensions.
+making attention of type 'vanilla' with 64 in_channels
