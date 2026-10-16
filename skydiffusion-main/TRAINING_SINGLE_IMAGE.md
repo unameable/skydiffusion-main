@@ -26,7 +26,7 @@ sample_002,street/002.jpg,aerial/002.png,
 `--source-mode panorama`（默认）会执行 Curved-BEV，几何参数目前针对 CVACT/CVUSA。`--source-mode bev` 可直接读取已经对齐的 RGB BEV 条件图（含自定义数据），跳过几何变换。`.pkl` 作为已经转换的 BEV，必须保存 HWC RGB 的浮点 `[0,1]` 或 uint8 `[0,255]` 数组。模型最终接收 `hint=[0,1]`、`jpg=[-1,1]`。
 
 ```powershell
-python skydiffusion_train.py --train-data F:/data/train.csv --val-data F:/data/val.csv --check-data
+python skydiffusion_train.py --train-data ./datasets/CVACT/train.csv --val-data ./datasets/CVACT/val.csv --check-data
 ```
 
 检查 `training_runs/single_image/data_preview`：每张预览左侧为 BEV，右侧为 GT；`ranges.json` 记录前四个样本的形状和范围。这是小样本检查，不代替全量数据清洗。
@@ -41,23 +41,23 @@ python skydiffusion_train.py --train-data F:/data/train.csv --val-data F:/data/v
 2. `--init-checkpoint`：完整的 SkyDiffusion 权重，开始新的优化器和步数；所有模型键都必须存在并且形状兼容。
 3. `--resume`：此训练入口保存的 Lightning checkpoint，恢复模型、优化器及全局步数。恢复时使用同一训练配置和相同参数冻结设置。
 
-CLIP tokenizer 和文本模型默认使用 `openai/clip-vit-large-patch14`，首次会由 transformers 下载。离线时用 `--clip-model F:/models/clip-vit-large-patch14`，该目录必须包含 tokenizer、配置和模型权重。
+CLIP tokenizer 和文本模型默认使用 `openai/clip-vit-large-patch14`，首次会由 transformers 下载。离线时用 `--clip-model ./clip-vit-large-patch14`，该目录必须包含 tokenizer、配置和模型权重。
 
 先用真实数据/权重跑两步验证：
 
 `--smoke-test` 用于开始新的两步运行，与 `--resume` 互斥；检查恢复训练时，使用高于已保存步数的 `--max-steps`。
 
 ```powershell
-python skydiffusion_train.py --train-data F:/data/train.csv --val-data F:/data/val.csv --sd-checkpoint F:/models/v1-5-pruned.ckpt --clip-model F:/models/clip-vit-large-patch14 --smoke-test --output-dir training_runs/smoke
+python skydiffusion_train.py --train-data ./datasets/CVACT/train.csv --val-data ./datasets/CVACT/val.csv --sd-checkpoint ./models/v1-5-pruned.ckpt --clip-model ./clip-vit-large-patch14 --smoke-test --output-dir training_runs/smoke
 ```
 
 正式训练示例：
 
 ```powershell
-python skydiffusion_train.py --train-data F:/data/train.csv --val-data F:/data/val.csv --sd-checkpoint F:/models/v1-5-pruned.ckpt --clip-model F:/models/clip-vit-large-patch14 --precision 16 --batch-size 1 --accumulate-grad-batches 4 --max-steps 20000 --output-dir training_runs/cvact_single
+python skydiffusion_train.py --train-data ./datasets/CVACT/train.csv --val-data ./datasets/CVACT/val.csv --sd-checkpoint ./models/v1-5-pruned.ckpt --clip-model ./clip-vit-large-patch14 --precision 16 --batch-size 1 --accumulate-grad-batches 4 --max-steps 20000 --output-dir training_runs/cvact_single
 ```
 
-`--dataset-name CVUSA` 选择 CVUSA 几何参数。对已经转换的 BEV，加入 `--source-mode bev`。已有 SkyDiffusion 权重时，将 `--sd-checkpoint` 换成 `--init-checkpoint F:/models/CVACT_Skydiffusion.ckpt`。
+`--dataset-name CVUSA` 选择 CVUSA 几何参数。对已经转换的 BEV，加入 `--source-mode bev`。已有 SkyDiffusion 权重时，将 `--sd-checkpoint` 换成 `--init-checkpoint ./models/CVACT_Skydiffusion.ckpt`。
 
 默认只训练控制网络，VAE、条件编码器、文本编码器和 SD 主干冻结；冻结的 SD 解码器仍保留对控制特征的梯度传播。增加 `--train-unet-decoder` 可额外训练 U-Net 解码器和输出层，编码器/中间层仍冻结。学习率默认 `1e-5`，使用原有噪声预测 L2 损失和 AdamW，默认不使用 EMA。
 
@@ -82,7 +82,7 @@ python skydiffusion_train.py --config training_runs/cvact_single/training_config
 使用保存的模型配置推理，并保持相同 BEV 设置：
 
 ```powershell
-python skydiffusion_test.py --num_gpus=1 --batch_size=1 --config_path=training_runs/cvact_single/model_config.yaml --model_path=training_runs/cvact_single/checkpoints/last.ckpt --data_file_path=F:/data/val.csv --result_dir=results/cvact_single --dataset_name=CVACT --source_mode=panorama --rotation_degrees=90
+python skydiffusion_test.py --num_gpus=1 --batch_size=1 --config_path=training_runs/cvact_single/model_config.yaml --model_path=training_runs/cvact_single/checkpoints/last.ckpt --data_file_path=./datasets/CVACT/val.csv --result_dir=results/cvact_single --dataset_name=CVACT --source_mode=panorama --rotation_degrees=90
 ```
 
 若训练时用的是 `source_mode=bev` 或其他旋转角度，推理也相应设置。当前测试入口仍需要配对清单中的 GT。

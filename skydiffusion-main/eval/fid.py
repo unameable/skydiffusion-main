@@ -93,10 +93,10 @@ def calculate_fid_given_paths(paths, img_size=256, batch_size=1):
     print('Calculating FID given paths %s and %s...' % (paths[0], paths[1]))
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     inception = InceptionV3().eval().to(device)
-    path1 = '/mnt/petrelfs/chenyuankun/comingdowntoearth/test_demo/streets'
-    path2 = '/mnt/petrelfs/chenyuankun/comingdowntoearth/test_demo/fake_streets'
-    path3 = '/mnt/petrelfs/chenyuankun/comingdowntoearth/eval/cvusa/cdte/fake'
-    path4 = '/mnt/petrelfs/chenyuankun/comingdowntoearth/eval/cvusa/cdte/real'
+    path1 = './results/comingdowntoearth/test_demo/streets'
+    path2 = './results/comingdowntoearth/test_demo/fake_streets'
+    path3 = './results/comingdowntoearth/eval/cvusa/cdte/fake'
+    path4 = './results/comingdowntoearth/eval/cvusa/cdte/real'
 
 
     mean = [0.485, 0.456, 0.406]
@@ -175,13 +175,13 @@ def calculate_fid_given_paths(paths, img_size=256, batch_size=1):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--paths', default='/mnt/petrelfs/chenyuankun/comingdowntoearth/test_demo')
+    parser.add_argument('--paths', default='./results/comingdowntoearth/test_demo')
     parser.add_argument('--img_size', type=int, default=256, help='image resolution')
     parser.add_argument('--batch_size', type=int, default=1, help='batch size to use')
     args = parser.parse_args()
     paths = []
-    paths.append('/mnt/petrelfs/chenyuankun/comingdowntoearth/test_demo/streets')
-    paths.append('/mnt/petrelfs/chenyuankun/comingdowntoearth/test_demo/fake_streets')
+    paths.append('./results/comingdowntoearth/test_demo/streets')
+    paths.append('./results/comingdowntoearth/test_demo/fake_streets')
     fid_value = calculate_fid_given_paths(paths, args.img_size, args.batch_size)
     print('FID: ', fid_value)
 

@@ -186,7 +186,7 @@ class EvalSegErr(Exception):
 
 
 if __name__ == "__main__":
-    fold = "D:/permanent/aligned_2k/seg_compare"
+    fold = "./datasets/aligned_2k/seg_compare"
     fold_gt = fold + '/gt/result'
     fold_p2p = fold + '/p2p/images/output/result'
     fold_cvpr = fold + '/cvpr2018/images/output/result'

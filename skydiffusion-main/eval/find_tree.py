@@ -1,9 +1,9 @@
 import os
 import shutil
 
-train_csv = '/mnt/petrelfs/chenyuankun/ControlNet/cleaned_sky_test.csv'
-train_dir = '/mnt/petrelfs/share_data/chenyuankun/ominicity_origin/street-level/rotate-panorama/rotate-panorama-test'
-save_data = '/mnt/petrelfs/share_data/chenyuankun/ominicity_origin/street-level/rotate-panorama/rotate-panorama-tree' 
+train_csv = './cleaned_sky_test.csv'
+train_dir = './datasets/ominicity_origin/street-level/rotate-panorama/rotate-panorama-test'
+save_data = './datasets/ominicity_origin/street-level/rotate-panorama/rotate-panorama-tree'
 
 cnt = 0
 sourcelist = []

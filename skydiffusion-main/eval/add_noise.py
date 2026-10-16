@@ -14,4 +14,4 @@ image = np.zeros((height, width), dtype=np.uint8)
 # 将噪声叠加到图像上
 image += noise
 # 保存带有噪声的图像
-cv2.imwrite('/mnt/petrelfs/chenyuankun/ControlNet/eval/noisy_image.png', image)
+cv2.imwrite('./eval/noisy_image.png', image)

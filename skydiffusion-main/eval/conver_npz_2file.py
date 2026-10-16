@@ -24,9 +24,9 @@ def main(gt_dir, pred_dir, out_dir):
 
 
 if __name__ == '__main__':
-    gt_dir ='/mnt/petrelfs/chenyuankun/sate_to_ground/bicycle_net/results_origin/streets'
-    pred_dir = '/mnt/petrelfs/chenyuankun/sate_to_ground/bicycle_net/results_origin/fake_streets'
-    out_dir = '/mnt/petrelfs/chenyuankun/sate_to_ground/bicycle_net/results_origin/npz'
+    gt_dir ='./results/bicycle_net/streets'
+    pred_dir = './results/bicycle_net/fake_streets'
+    out_dir = './results/bicycle_net/npz'
     if not os.path.exists(out_dir):
         os.mkdir(out_dir)
     main(gt_dir,pred_dir, out_dir)

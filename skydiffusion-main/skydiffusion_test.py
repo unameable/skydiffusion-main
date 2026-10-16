@@ -3,30 +3,33 @@ import torch
 import argparse
 import numpy as np
 from PIL import Image
+from omegaconf import OmegaConf
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader
 
 from share import *
 from skydiffusion_dataset import SkyDataset
 from cldm.logger import ValidImageLogger
-from cldm.model import create_model, load_state_dict
+from cldm.model import load_state_dict
+from ldm.util import instantiate_from_config
 
 
 def create_argparser():
     defaults = dict(
         seed = 42,
         config_path = './models/lacldm_v15.yaml',
-        model_path = './models/lacontrol_sd15_ini.ckpt',
+        model_path = './models/CVACT_SkyDiffusion.ckpt',
+        clip_model = '',
         image_width = 512,
         image_height = 512,
         text_prompt = '',
-        data_file_path = './test.csv',
-        batch_size = 4,
+        data_file_path = './examples/examples.txt',
+        batch_size = 1,
         result_dir = './results',
         logger_freq = 1,
         sample_num = 10000,
         unconditional_guidance_scale = 9.0,
-        num_gpus = 8,
+        num_gpus = 1,
         is_cvusa = False,
         negative_prompt = "",
         dataset_name = "CVACT",
@@ -41,11 +44,18 @@ def create_argparser():
 
 def main():
     args = create_argparser().parse_args()
+    if not os.path.isfile(args.model_path):
+        raise FileNotFoundError('SkyDiffusion checkpoint not found: {}. See models/README.md.'.format(args.model_path))
+    if not os.path.isfile(args.data_file_path):
+        raise FileNotFoundError('Data manifest not found: {}'.format(args.data_file_path))
     os.makedirs(args.result_dir, exist_ok=True)
 
     pl.seed_everything(args.seed, workers=True)
 
-    model = create_model(args.config_path).cpu()
+    config = OmegaConf.load(args.config_path)
+    if args.clip_model:
+        config.model.params.cond_stage_config.params.version = args.clip_model
+    model = instantiate_from_config(config.model).cpu()
     model.load_state_dict(load_state_dict(args.model_path, location='cpu'), strict=False)
     model = model.cuda()
     model.eval()
@@ -67,7 +77,7 @@ def main():
     logger = ValidImageLogger(args.result_dir, args.logger_freq, log_images_kwargs=log_images_kwargs)
     trainer = pl.Trainer(
         gpus=args.num_gpus,
-        # strategy="ddp",  # Windows 单 GPU 环境通常没有 NCCL，启用会报 Distributed package doesn't have NCCL built in
+        strategy="ddp" if args.num_gpus > 1 else None,
         precision=32,
         max_epochs=1,
         callbacks=[logger]

@@ -84,11 +84,11 @@ class Config:
         [0, 1]
         >>> cfg = Config.fromfile('tests/data/config/a.py')
         >>> cfg.filename
-        "/home/kchen/projects/mmcv/tests/data/config/a.py"
+        "tests/data/config/a.py"
         >>> cfg.item4
         'test'
         >>> cfg
-        "Config [path: /home/kchen/projects/mmcv/tests/data/config/a.py]: "
+        "Config [path: tests/data/config/a.py]: "
         "{'item1': [1, 2], 'item2': {'a': 0}, 'item3': True, 'item4': 'test'}"
     """
 

@@ -208,25 +208,25 @@ def process_func(item):
 
 def main(input_file, output_dir, output_file):
     # train
-    # sate_img_dir = '/mnt/petrelfs/share_data/chenyuankun/ominicity_origin/satellite-level/image-satellite/satellite-image-view1/view1-train'
-    # sate_img_dir = '/mnt/petrelfs/share_data/chenyuankun/ominicity_origin/satellite-level/image-satellite/satellite-image-view2/view2-train'
-    # sate_img_dir = '/mnt/petrelfs/share_data/chenyuankun/ominicity_origin/satellite-level/image-satellite/satellite-image-view3/view3-train'
-    # height_img_dir = '/mnt/petrelfs/share_data/chenyuankun/ominicity_origin/satellite-level/annotation-height/annotation-height-train'
+    # sate_img_dir = './datasets/ominicity_origin/satellite-level/image-satellite/satellite-image-view1/view1-train'
+    # sate_img_dir = './datasets/ominicity_origin/satellite-level/image-satellite/satellite-image-view2/view2-train'
+    # sate_img_dir = './datasets/ominicity_origin/satellite-level/image-satellite/satellite-image-view3/view3-train'
+    # height_img_dir = './datasets/ominicity_origin/satellite-level/annotation-height/annotation-height-train'
     # test
-    # sate_img_dir = '/mnt/petrelfs/share_data/chenyuankun/ominicity_origin/satellite-level/image-satellite/satellite-image-view1/view1-test'
-    # sate_img_dir = '/mnt/petrelfs/share_data/chenyuankun/ominicity_origin/satellite-level/image-satellite/satellite-image-view2/view2-test'
-    # sate_img_dir = '/mnt/petrelfs/share_data/chenyuankun/ominicity_origin/satellite-level/image-satellite/satellite-image-view3/view3-test'
-    # height_img_dir = '/mnt/petrelfs/share_data/chenyuankun/ominicity_origin/satellite-level/annotation-height/annotation-height-test'
+    # sate_img_dir = './datasets/ominicity_origin/satellite-level/image-satellite/satellite-image-view1/view1-test'
+    # sate_img_dir = './datasets/ominicity_origin/satellite-level/image-satellite/satellite-image-view2/view2-test'
+    # sate_img_dir = './datasets/ominicity_origin/satellite-level/image-satellite/satellite-image-view3/view3-test'
+    # height_img_dir = './datasets/ominicity_origin/satellite-level/annotation-height/annotation-height-test'
 
-    # sate_img_dir = '/mnt/petrelfs/share_data/chenyuankun/omnicity/satellite-level/image-satellite/'
-    # height_img_dir = '/mnt/petrelfs/share_data/chenyuankun/omnicity/satellite-level/annotation-height/'
+    # sate_img_dir = './datasets/omnicity/satellite-level/image-satellite/'
+    # height_img_dir = './datasets/omnicity/satellite-level/annotation-height/'
 
     # cvusa
-    sate_img_dir = '/mnt/petrelfs/share_data/chenyuankun/cvusa/bingmap'
+    sate_img_dir = './datasets/CVUSA/bingmap'
     # train
-    height_img_dir = '/mnt/petrelfs/share_data/chenyuankun/cvusa/cvusa_height_train'
+    height_img_dir = './datasets/CVUSA/cvusa_height_train'
     # test
-    # height_img_dir = '/mnt/petrelfs/share_data/chenyuankun/cvusa/cvusa_height_test'
+    # height_img_dir = './datasets/CVUSA/cvusa_height_test'
 
     to_process_items = []
     writer = open(output_file, 'w')
@@ -266,22 +266,22 @@ if __name__ == '__main__':
 
 
 # python data/omnicity/sate_attn_preprocess.py \
-#     /mnt/petrelfs/share_data/zhonghuaping.p/datasets/OmniCity/medium-view/cleaned_geo-height_trainval.csv \
-#     /mnt/petrelfs/share_data/zhonghuaping.p/datasets/OmniCity/sate-image-weight/train \
-#     /mnt/petrelfs/share_data/zhonghuaping.p/datasets/OmniCity/medium-view/cleaned_geo-height_sate_attn_trainval.csv
+#     ./datasets/OmniCity/medium-view/cleaned_geo-height_trainval.csv \
+#     ./datasets/OmniCity/sate-image-weight/train \
+#     ./datasets/OmniCity/medium-view/cleaned_geo-height_sate_attn_trainval.csv
 
 # python data/omnicity/sate_attn_preprocess.py \
-#     /mnt/petrelfs/share_data/zhonghuaping.p/datasets/OmniCity/medium-view/geo-height_test.csv \
-#     /mnt/petrelfs/share_data/zhonghuaping.p/datasets/OmniCity/sate-image-weight/test \
-#     /mnt/petrelfs/share_data/zhonghuaping.p/datasets/OmniCity/medium-view/geo-height_sate_attn_test.csv
+#     ./datasets/OmniCity/medium-view/geo-height_test.csv \
+#     ./datasets/OmniCity/sate-image-weight/test \
+#     ./datasets/OmniCity/medium-view/geo-height_sate_attn_test.csv
 
 # python data/omnicity/sate_attn_preprocess.py \
-#     /mnt/petrelfs/share_data/zhonghuaping.p/datasets/OmniCity2/geo_height/random-cleaned2-train.csv \
-#     /mnt/petrelfs/share_data/zhonghuaping.p/datasets/OmniCity2/sate-image-weight \
-#     /mnt/petrelfs/share_data/zhonghuaping.p/datasets/OmniCity2/geo_height-sate_attn/random-cleaned2-train.csv
+#     ./datasets/OmniCity2/geo_height/random-cleaned2-train.csv \
+#     ./datasets/OmniCity2/sate-image-weight \
+#     ./datasets/OmniCity2/geo_height-sate_attn/random-cleaned2-train.csv
 
 
 
 # cvusa
-# python data/omnicity/sate_attn_preprocess.py /mnt/petrelfs/share_data/zhonghuaping.p/datasets/CVUSA/cdte/train.csv /mnt/petrelfs/share_data/zhonghuaping.p/datasets/CVUSA/sate-image-weight /mnt/petrelfs/share_data/zhonghuaping.p/datasets/CVUSA/sate_attn/cdte-train.csv
-# python data/omnicity/sate_attn_preprocess.py /mnt/petrelfs/share_data/zhonghuaping.p/datasets/CVUSA/cdte/val.csv /mnt/petrelfs/share_data/zhonghuaping.p/datasets/CVUSA/sate-image-weight /mnt/petrelfs/share_data/zhonghuaping.p/datasets/CVUSA/sate_attn/cdte-val.csv
+# python data/omnicity/sate_attn_preprocess.py ./datasets/CVUSA/cdte/train.csv ./datasets/CVUSA/sate-image-weight ./datasets/CVUSA/sate_attn/cdte-train.csv
+# python data/omnicity/sate_attn_preprocess.py ./datasets/CVUSA/cdte/val.csv ./datasets/CVUSA/sate-image-weight ./datasets/CVUSA/sate_attn/cdte-val.csv

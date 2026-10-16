@@ -1,0 +1,38 @@
+# Python and local tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.vscode/
+.idea/
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+
+# Local credentials
+.env
+.env.*
+!.env.example
+
+# Downloaded weights and generated runs (keep source/configs/examples)
+clip-vit-large-patch14/
+*.ckpt
+*.pth
+*.pt
+*.safetensors
+*.onnx
+lightning_logs/
+training_runs/
+results/
+wandb/
+.cache/
+condaenv.*.requirements.txt
+
+# Keep dataset layout documentation, exclude downloaded data and manifests
+/skydiffusion-main/datasets/**
+!/skydiffusion-main/datasets/README.md
+!/skydiffusion-main/datasets/G2A-3/
+!/skydiffusion-main/datasets/CVUSA/
+!/skydiffusion-main/datasets/CVACT/
+!/skydiffusion-main/datasets/VIGOR/
+!/skydiffusion-main/datasets/*/.gitkeep

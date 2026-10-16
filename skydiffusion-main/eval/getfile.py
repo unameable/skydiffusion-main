@@ -2,11 +2,11 @@ import os
 import shutil
 
 # 源目录
-source_directory = "/mnt/petrelfs/chenyuankun/ControlNet/results/geo+atten/image_log/test_neg2"
+source_directory = "./results/geo+atten/image_log/test_neg2"
 
 # 目标目录
-real_directory = "/mnt/petrelfs/chenyuankun/ControlNet/results/geo+atten/image_log/test_neg2/real"
-fake_directory = "/mnt/petrelfs/chenyuankun/ControlNet/results/geo+atten/image_log/test_neg2/fake"
+real_directory = "./results/geo+atten/image_log/test_neg2/real"
+fake_directory = "./results/geo+atten/image_log/test_neg2/fake"
 if not os.path.exists(real_directory):
     os.mkdir(real_directory)
 if not os.path.exists(fake_directory):

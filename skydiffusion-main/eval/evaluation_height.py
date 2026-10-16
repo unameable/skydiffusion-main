@@ -53,4 +53,4 @@ if __name__ == "__main__":
 
 # python eval/evaluation_height.py \
 #     lightning_logs/version_1549720/results/ \
-#     /mnt/petrelfs/share_data/bigdata_rs/datasets/OmniCity/OmniCity/OmniCity-dataset-trainval/satellite-level/annotation-height/annotation-height-test
+#     ./datasets/OmniCity/OmniCity/OmniCity-dataset-trainval/satellite-level/annotation-height/annotation-height-test

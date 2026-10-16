@@ -211,7 +211,7 @@ def seg2bmap2(seg,width=None,height=None):
 	return bmap
 
 def F_Sem():
-	fold = "D:/permanent/aligned_2k/seg_compare"
+	fold = "./datasets/aligned_2k/seg_compare"
 	fold_gt = fold + '/gt/result'
 	fold_p2p = fold + '/p2p/images/output/result'
 	fold_cvpr = fold + '/cvpr2018/images/output/result'
@@ -280,7 +280,7 @@ def F_Sem():
 	print(f_abl3_avg/len(img_id))
 
 def F_Depth():
-	fold = "D:/permanent/aligned_2k/rebuttal/fscore/depth"
+	fold = "./datasets/aligned_2k/rebuttal/fscore/depth"
 	fold_gt = fold + '/gt'
 	fold_pred = fold + '/pred'
 	img_id = []	

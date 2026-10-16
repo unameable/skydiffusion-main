@@ -80,10 +80,10 @@ if __name__ == "__main__":
     #     print(f"Usage: python {script_name} [pred_dir] [gt_dir]")
     #     sys.exit(0)
 
-    # fold_pred = '/mnt/petrelfs/chenyuankun/ControlNet/results/202310211809_geo512/image_log/test_neg_p5/fake'
-    # fold_gt = '/mnt/petrelfs/chenyuankun/ControlNet/results/202310211809_geo512/image_log/test_neg_p5/real'
-    # fold_pred = '/mnt/petrelfs/chenyuankun/comingdowntoearth/eval/SD/fake'
-    # fold_gt = '/mnt/petrelfs/chenyuankun/comingdowntoearth/eval/SD/real'
+    # fold_pred = './results/202310211809_geo512/image_log/test_neg_p5/fake'
+    # fold_gt = './results/202310211809_geo512/image_log/test_neg_p5/real'
+    # fold_pred = './results/comingdowntoearth/eval/SD/fake'
+    # fold_gt = './results/comingdowntoearth/eval/SD/real'
     fold_pred = sys.argv[1].strip()
     fold_gt = sys.argv[2].strip()
     #get images
@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
     width, height = 1024, 512
     i = 0
-    # fold_gt = '/mnt/petrelfs/share_data/chenyuankun/omnicity/street-level/rotated-image-panorama'
+    # fold_gt = './datasets/omnicity/street-level/rotated-image-panorama'
     for f in file_list:
         i += 1
         img_pred = cv2.imread(fold_pred+'/'+f)

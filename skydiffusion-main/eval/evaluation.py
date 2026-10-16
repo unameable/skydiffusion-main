@@ -117,4 +117,4 @@ if __name__ == "__main__":
     print('L1: ', L1_score_avg)
     print('lpips', dist_avg)
 # srun -p bigdata  --cpus-per-task=92
-# srun -p bigdata --gres=gpu:1 --cpus-per-task=32  python -m pytorch_fid /mnt/petrelfs/chenyuankun/ControlNet/results/202310211809/image_log/test_neg_pasd_plus/real /mnt/petrelfs/chenyuankun/ControlNet/results/202310211809/image_log/test_neg_pasd_plus/fake
+# srun -p bigdata --gres=gpu:1 --cpus-per-task=32  python -m pytorch_fid ./results/202310211809/image_log/test_neg_pasd_plus/real ./results/202310211809/image_log/test_neg_pasd_plus/fake

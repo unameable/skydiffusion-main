@@ -1,16 +1,16 @@
 import os
 
 # 读取两个文件名列表
-# train_file_list = '/mnt/petrelfs/chenyuankun/Sat2Density/train.txt'
-test_file_list = '/mnt/petrelfs/share_data/chenyuankun/omnicity/random_test_cleaned2.txt'
+# train_file_list = './datasets/Sat2Density/train.txt'
+test_file_list = './datasets/omnicity/random_test_cleaned2.txt'
 
 # 两个文件夹路径
-folder1 = '/mnt/petrelfs/share_data/chenyuankun/omnicity/street-level/sky-mask'
-folder2 = '/mnt/petrelfs/share_data/chenyuankun/omnicity/street-level/rotated-image-panorama'
-# folder3 = '/mnt/petrelfs/share_data/zhonghuaping.p/datasets/OmniCity/geo-height-panorama/test'
-# folder3 = '/mnt/petrelfs/share_data/chenyuankun/omnicity/street-level/geo-height-panorama'
-# train_csv = '/mnt/petrelfs/chenyuankun/Sat2Density/new_density_train.csv'
-test_csv = '/mnt/petrelfs/chenyuankun/ControlNet/extra_skymask.csv'
+folder1 = './datasets/omnicity/street-level/sky-mask'
+folder2 = './datasets/omnicity/street-level/rotated-image-panorama'
+# folder3 = './datasets/OmniCity/geo-height-panorama/test'
+# folder3 = './datasets/omnicity/street-level/geo-height-panorama'
+# train_csv = './datasets/Sat2Density/new_density_train.csv'
+test_csv = './extra_skymask.csv'
 
 # 从文件名列表中读取文件名
 def read_file_list(file_path):

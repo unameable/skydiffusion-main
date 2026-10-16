@@ -78,5 +78,5 @@ model:
     cond_stage_config:
       target: ldm.modules.encoders.modules.FrozenCLIPEmbedder
       params:
-        version: "F:/models/clip-vit-large-patch14"
+        version: "openai/clip-vit-large-patch14"
         device: "cuda"
