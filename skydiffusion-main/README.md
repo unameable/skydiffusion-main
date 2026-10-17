@@ -57,6 +57,8 @@ conda activate skydiffusion
 
 ## Data Preparation
 
+在新机器上训练，请优先阅读 [本地模型下载、目录布局与 G2A-3 训练命令](SETUP_LOCAL.md)。训练配置使用相对路径，模型文件需手动准备；已有数据时可直接生成 History 配对清单。
+
 The publicly available datasets used in this paper can be obtained from the following sources:
 
 **Preparing G2A-3 Dataset.**  The dataset can be downloaded [here](https://huggingface.co/datasets/Yejy53/G2A-3/tree/main).

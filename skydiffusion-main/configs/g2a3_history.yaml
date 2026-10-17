@@ -1,0 +1,31 @@
+# History panoramas use the existing CVACT projection as an approximate baseline, not calibrated G2A-3 geometry.
+# Paths below are relative to the working directory, except model_config (project root).
+model_config: models/lacldm_v15.yaml
+clip_model: ./clip-vit-large-patch14
+train_data: datasets/G2A-3/history_train.csv
+val_data: null
+data_root: ./datasets/G2A-3
+dataset_name: CVACT
+source_mode: panorama
+is_cvusa: false
+rotation_degrees: 90.0
+image_size: 512
+prompt: ""
+drop_prompt_ratio: 0.1
+learning_rate: 1.0e-5
+sd_locked: true
+batch_size: 1
+num_workers: 0
+accumulate_grad_batches: 4
+max_steps: 20000
+precision: 32
+accelerator: gpu
+devices: 1
+gradient_clip_val: 1.0
+checkpoint_every: 1000
+image_log_every: 500
+ddim_steps: 20
+val_every_epochs: 1
+output_dir: training_runs/g2a3_history
+seed: 42
+

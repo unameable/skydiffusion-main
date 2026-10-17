@@ -2,6 +2,8 @@
 
 本仓库基于 SkyDiffusion，包含单幅街景到航拍图的训练入口、数据检查、权重初始化和断点恢复功能。原论文与作者信息见[项目说明](skydiffusion-main/README.md)。
 
+**在另一台机器上训练：** 请先阅读 [模型下载、文件摆放与 G2A-3 训练命令](skydiffusion-main/SETUP_LOCAL.md)。训练配置使用相对路径；按说明放好 CLIP、SD 1.5 权重和数据集后，无需修改代码。模型、数据集和生成的训练清单不随 Git 提交。
+
 代码位于内层 `skydiffusion-main/`，请从仓库根目录进入该目录后运行命令：
 
 ```powershell

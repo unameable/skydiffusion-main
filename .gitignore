@@ -16,6 +16,15 @@ Thumbs.db
 
 # Downloaded weights and generated runs (keep source/configs/examples)
 clip-vit-large-patch14/
+# Downloaded model payloads, including Hugging Face/PyTorch/TF/Flax formats.
+# Keep model YAML configs and documentation versioned.
+/skydiffusion-main/models/**
+!/skydiffusion-main/models/*.yaml
+!/skydiffusion-main/models/*.yml
+!/skydiffusion-main/models/README.md
+*.bin
+*.h5
+*.msgpack
 *.ckpt
 *.pth
 *.pt

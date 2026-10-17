@@ -4,7 +4,7 @@
 
 ## CLIP 文本编码器
 
-默认配置使用 `openai/clip-vit-large-patch14`，首次运行会通过 transformers 下载。
+训练配置默认使用本地相对路径 `./clip-vit-large-patch14`，请先手动准备下面的文件。完整迁移步骤见 [新机器准备说明](../SETUP_LOCAL.md)。推理入口仍可通过 `--clip_model` 指定本地目录。
 文件来源：[OpenAI CLIP 模型仓库](https://huggingface.co/openai/clip-vit-large-patch14/tree/main)。
 
 离线使用时，把以下文件放到 `clip-vit-large-patch14/`：
